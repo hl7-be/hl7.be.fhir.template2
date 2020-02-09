@@ -1,2 +1,2 @@
 # hl7.be.fhir.template
-HL/ Belgium FHIR Template
+HL7 Belgium FHIR Template
