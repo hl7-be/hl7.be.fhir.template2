@@ -474,6 +474,11 @@ div.markdown-toc p.link
   padding-left: 8px;
   margin: 0px;
 }
+
+h1, h2, h3 {
+    padding-top: 0.1em;
+    line-height: normal;
+}
 /* Common content for section numbering */
 body{counter-reset:section}
 h2{counter-reset:sub-section}
