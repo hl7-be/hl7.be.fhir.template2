@@ -67,36 +67,46 @@ Usage:
 
   --toc-box-bg-color: #ffeb7e; /* 17.  TOC box background color */
   --toc-box-border: 1px solid navy; /* 18. TOC box border definition */
-  
+
   --stu-note-background-color: #fff2ff; /* 19. (STU) Note box background color */
   --stu-note-border-left-color: #ffa0ff; /* 20. (STU) Note box border color */
 
 }
 
+.navbar .nav > li > a {
+  padding: 8px 12px;
+  text-shadow: none;
+}
 
 #fhir-nav {
     line-height: 50px;
     float: right;
-    margin-top: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #808080;
 }
 
-#hl7-nav {
+#ig-nav {
     line-height: 50px;
     float: left;
-    margin-top: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #808080;
 }
 
-#hl7-status {
+#ig-status {
   line-height: 20px;
   margin-top: 26px;
-  color: maroon;
+  color: var(--ig-status-text-color);
   text-align: center;
   height: 60px;
 
 }
 
-
-
+#ig-search {
+    line-height: 50px;
+    float: right;
+    margin-top: 16px;
+    color: var(--ig-status-text-color);
+}
 
