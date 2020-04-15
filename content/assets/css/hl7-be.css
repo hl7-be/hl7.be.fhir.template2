@@ -92,6 +92,9 @@ Usage:
     margin-top: 5px;
     margin-bottom: 5px;
     color: #808080;
+    vertical-align: middle;
+    line-height: 5.5;
+    margin-left: 10px;
 }
 
 #ig-status {
