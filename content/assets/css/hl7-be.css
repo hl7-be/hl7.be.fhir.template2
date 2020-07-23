@@ -115,23 +115,23 @@ Usage:
 
 
 
-
 .feedback {
-  color: #f7f0f0;
+  color: #ffffff;
   padding:2px ;
   font-size: 80%;
-  background-image: url('../images/icon-edit-box.png');
   background-size: 18px 18px;
   background-position: left center;
   background-repeat: no-repeat;
-  content: ".......................................";
-  padding-left: 27px;
+  padding-left: 17px;
   padding-right: 7px;
-/*  float: left; */
+  float: right; 
+  border-radius: 6px; 
+
 }
 
 .feedback:hover  {
-  color: #ffffff;
-  background-color: #605959;
+  color: #101010;
+  border: 1px solid #777;
+  background-color: #f0f0f0;
 }
 
