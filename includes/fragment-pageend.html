@@ -4,9 +4,9 @@
     </div>  <!-- /container -->
   </div>  <!-- /segment-content -->
 
-{% if includetabscripts %}
-  <script type="text/javascript" src="{{site.data.info.assets}}assets/js/jquery.js"> </script>
+  <script type="text/javascript" src="{{site.data.info.assets}}assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/jquery-ui.min.js"> </script>
+{% if includetabscripts %}
   <script type="text/javascript">
     try {
       var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
@@ -30,6 +30,13 @@
     });
   </script>
 {% endif %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(window.location.hash != "") {
+        $('a[href="' + window.location.hash + '"]').click()
+    }
+  });
+</script>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
       <div class="inner-wrapper">
@@ -53,7 +60,6 @@
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="{{site.data.info.assets}}assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/respond.min.js"> </script>
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/anchor.min.js"> </script>
@@ -72,7 +78,6 @@ anchors.add()</script>
     feedbackurl = feedbackurl + '&';
     feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }}
     {% endfor %}
-
     {% endif %};
 
     if (id) { //To make sure the element has an id
@@ -86,7 +91,6 @@ anchors.add()</script>
           target: '_blank',
   
           onclick: 'window.open('+feedbackurl+',\'newwindow\',\'width=300,height=250\');return false;'
-  
   
         });
       });
