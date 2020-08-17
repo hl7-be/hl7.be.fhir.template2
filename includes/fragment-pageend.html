@@ -70,7 +70,7 @@ anchors.add()</script>
 
 {% if site.data.features.feedback.active %}
 <script>
-/* <![CDATA[ */
+<![CDATA[
   $(':header[id]').each(function() {
     var id = $(this).attr('id');
     var feedbackurl = '{{site.data.features.feedback.formUrl}}';
@@ -97,7 +97,7 @@ anchors.add()</script>
       });
     }
   })
-/* ]]> */
+]]>
 </script>  
 {% endif %}
 
