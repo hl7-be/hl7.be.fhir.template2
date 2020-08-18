@@ -69,14 +69,13 @@ anchors.add()</script>
 
 
 {% if site.data.features.feedback.active %}
-<script>
-<![CDATA[
+<script type="text/javascript">
   $(':header[id]').each(function() {
     var id = $(this).attr('id');
     var feedbackurl = '{{site.data.features.feedback.formUrl}}';
     {% if site.data.features.feedback.parameters %}
     {% for parm in site.data.features.feedback.parameters %}
-    feedbackurl = feedbackurl + '&';
+    feedbackurl = feedbackurl + "&";
     feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }}
     {% endfor %}
     {% endif %};
@@ -97,7 +96,6 @@ anchors.add()</script>
       });
     }
   })
-]]>
 </script>  
 {% endif %}
 
