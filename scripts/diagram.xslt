@@ -105,14 +105,16 @@ participant</xsl:if>
 <xsl:variable name="vid" select="../fhir:versionId/@value"/> (<xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:version[fhir:versionId/@value=$vid]/fhir:description/@value"/>)</xsl:template>
 
 <xsl:template  match="fhir:request">
+<xsl:if test="./fhir:resourceId">
 <xsl:variable name="iid" select="./fhir:resourceId/@value"/>
 <xsl:variable name="vid" select="./fhir:versionId/@value"/>
-<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:template>
+<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
 
 <xsl:template  match="fhir:response">
+<xsl:if test="./fhir:resourceId">
 <xsl:variable name="iid" select="./fhir:resourceId/@value"/>
 <xsl:variable name="vid" select="./fhir:versionId/@value"/>
-<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:template>
+<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
 
 
 
