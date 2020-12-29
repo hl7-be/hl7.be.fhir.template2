@@ -75,7 +75,7 @@ anchors.add()</script>
     var feedbackurl = '{{site.data.features.feedback.formUrl}}';
     {% if site.data.features.feedback.parameters %}
     {% for parm in site.data.features.feedback.parameters %}
-    feedbackurl = feedbackurl + "&";
+    feedbackurl = feedbackurl + '&';
     feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }}
     {% endfor %}
     {% endif %};
