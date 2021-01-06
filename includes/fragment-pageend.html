@@ -77,7 +77,7 @@ anchors.add()</script>
     {% if site.data.features.feedback.parameters %}
     {% for parm in site.data.features.feedback.parameters %}
     feedbackurl = feedbackurl + '&';
-    feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }}
+    feedbackurl = feedbackurl + eval({{ parm.name }}) + '=' + eval({{ parm.value }})
     {% endfor %}
     {% endif %};
 
