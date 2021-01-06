@@ -77,9 +77,9 @@ anchors.add()</script>
     {% if site.data.features.feedback.parameters %}
     {% for parm in site.data.features.feedback.parameters %}
     feedbackurl = feedbackurl + '&';
-    feedbackurl = feedbackurl + eval({{ parm.name }}) + '=' + eval({{ parm.value }})
+    feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }};
     {% endfor %}
-    {% endif %};
+    {% endif %}
 
     if (id) { //To make sure the element has an id
       $(this).append('       ');
