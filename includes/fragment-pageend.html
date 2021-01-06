@@ -68,46 +68,38 @@ anchors.add()</script>
 
 
 
-{% for feedbackEntry in site.data.features.feedback %}
-  {% if feedbackEntry.active %}
-  <script type="text/javascript">
-  /* <![CDATA[ */
-    $(':header[id]').each(function() {
-      var id = $(this).attr('id');
-      var feedbackurl = '{{feedbackEntry.formUrl}}';
-      var feedbacklabel = 'Feedback';
-      {% if feedbackEntry.parameters %}
-        {% if feedbackEntry.label %}
-          feedbacklabel = '{{feedbackEntry.label}}';
-        {% endif %};
-        {% for parm in feedbackEntry.parameters %}
-          feedbackurl = feedbackurl + '&';
-          feedbackurl = feedbackurl + eval({{ parm.name }}) + '=' + eval({{ parm.value }})
-        {% endfor %}
-      {% endif %};
+{% if site.data.features.feedback.active %}
+<script type="text/javascript">
+/* <![CDATA[ */
+  $(':header[id]').each(function() {
+    var id = $(this).attr('id');
+    var feedbackurl = '{{site.data.features.feedback.formUrl}}';
+    {% if site.data.features.feedback.parameters %}
+    {% for parm in site.data.features.feedback.parameters %}
+    feedbackurl = feedbackurl + '&';
+    feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }}
+    {% endfor %}
+    {% endif %};
 
-      if (id) { //To make sure the element has an id
-//        $(this).append('       ');
-        $(this).append(function () {
-          return $('<a/>', {
-            id,
-            href: feedbackurl,
-            text: feedbacklabel+' ' ,
-            class: 'feedback',
-            target: '_blank',
-    
-            onclick: 'window.open('+feedbackurl+',\'newwindow\',\'width=300,height=250\');return false;'
-    
-          });
+    if (id) { //To make sure the element has an id
+      $(this).append('       ');
+      $(this).append(function () {
+        return $('<a/>', {
+          id,
+          href: feedbackurl,
+          text: 'Feedback ',
+          class: 'feedback',
+          target: '_blank',
+  
+          onclick: 'window.open('+feedbackurl+',\'newwindow\',\'width=300,height=250\');return false;'
+  
         });
-
-
-      }
-    })
-  /* ]]> */
-  </script>  
-  {% endif %}
-{% endfor %}
+      });
+    }
+  })
+/* ]]> */
+</script>  
+{% endif %}
 
 
 <!-- Analytics Below
