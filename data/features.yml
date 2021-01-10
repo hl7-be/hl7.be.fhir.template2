@@ -1,8 +1,9 @@
 #---
 #feedback:
 #  - active: true
+#    type: "googleform"   
+#    label: "Issue"
 #    formUrl: https://docs.google.com/forms/d/e/1FAIpQLSdFe3PHRfKlbIf1p1WJ3oqTjnMA_BNyaTdmiKTjpu9RYIaBdQ/viewform?usp=pp_url
-#    label: "GeneralIssue"
 #    dashboard: 
 #       url: https://github.com/openhie/hiv-ig/projects/1
 #       label: "Issues"

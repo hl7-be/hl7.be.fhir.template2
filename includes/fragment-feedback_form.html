@@ -4,7 +4,12 @@
 
 
 {% for feedbackEntry in site.data.features.feedback %}
-  {% if feedbackEntry.active %}
+{% if feedbackEntry.active %}
+
+
+
+
+{% if feedbackEntry.type == 'googleform' %}
   <script type="text/javascript">
   /* <![CDATA[ */
     $(':header[id]').each(function() {
@@ -22,7 +27,7 @@
       {% endif %}
 
       if (id) { //To make sure the element has an id
-//        $(this).append('       ');
+  //        $(this).append('       ');
         $(this).append(function () {
           return $('<a/>', {
             id,
@@ -41,4 +46,7 @@
   /* ]]> */
   </script>  
   {% endif %}
+{% endif %}
+
+
 {% endfor %}
