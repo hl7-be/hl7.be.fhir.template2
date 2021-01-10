@@ -12,8 +12,10 @@
               feedbacklabel = '{{feedbackEntry.label}}';
             {% endif %};
             {% for parm in feedbackEntry.parameters %}
+/* <![CDATA[ */
               feedbackurl = feedbackurl + '&';
               feedbackurl = feedbackurl + {{ parm.name }} + '=' + {{ parm.value }};
+/* ]]> */
             {% endfor %}
           {% endif %}
 
