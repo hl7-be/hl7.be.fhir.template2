@@ -56,8 +56,8 @@
   </div>  <!-- /segment-post-footer -->
   
   <!-- JS and analytics only. -->
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
+  <!-- Bootstrap core JavaScript -->
+
   <!-- Placed at the end of the document so the pages load faster -->
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="{{site.data.info.assets}}assets/js/respond.min.js"> </script>
@@ -65,7 +65,7 @@
   <script>anchors.options.visible = 'hover'
 anchors.add()</script>
   
-{% include fragment-feedback_form.html %}
+{% include fragment-feedback_form.html | escape %}
 
   <!-- Analytics Below
   ================================================== -->
