@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:fhir="http://hl7.org/fhir" version="1.0">
-	<xsl:output method="html" />
-	<xsl:param name="pref" select="pref" />
+    <xsl:output method="html" />
+    <xsl:param name="pref" select="pref" />
 	<xsl:template match="/">
 
 														<div id="resources">
@@ -12,6 +12,28 @@
 
 
 	</xsl:template>
+
+
+<xsl:template name="break">
+  <xsl:param name="text" select="string(.)"/>
+  <xsl:choose>
+    <xsl:when test="contains($text, '\n')">
+      <xsl:value-of select="substring-before($text, '\n')"/>
+      <br/>
+      <xsl:call-template name="break">
+        <xsl:with-param 
+          name="text" 
+          select="substring-after($text, '\n')"
+        />
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$text"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+
 
 	<xsl:template match="fhir:resourceType">
 		<p />
@@ -33,16 +55,22 @@
 		</div>
 	</xsl:template>
 
+
+
+
+
 	<xsl:template match="fhir:instance">
-	
 		<xsl:variable name="thisResourceId" select="./fhir:resourceId/@value" />
 		<xsl:variable name="versions" select="count(./fhir:version)" />
-
 		<tr >
 			<td rowspan="{$versions+1}">
-				<a name="{resourceId/@value}" href="../fhir:examples/{resourceId/@value}">
+				<a name="{resourceId/@value}" href="./{fhir:resourceType/@value}-{./fhir:resourceId/@value}.html">
 					<b>
-						<xsl:value-of select="fhir:name/@value" />
+<!--						<xsl:value-of select="fhir:name/@value" />
+-->
+						<xsl:call-template name="break">
+							<xsl:with-param name="text" select="fhir:name/@value" />
+						</xsl:call-template>							
 					</b>
 				</a>
 			</td>
@@ -54,23 +82,12 @@
 		</tr>		
 	        <xsl:apply-templates select="./fhir:version" />		
 	</xsl:template>
-	
 
 	<xsl:template match="fhir:version">
-
 		<tr>
-			<td>
-		<xsl:value-of select="fhir:versionId/@value" />
-			</td>
-			<td>
-		<xsl:value-of select="fhir:description/@value" />
-			</td>
+			<td><xsl:value-of select="fhir:versionId/@value" /></td>
+			<td><xsl:value-of select="fhir:description/@value" /></td>
 		</tr>
-
 	</xsl:template>
-			
-			
-			
-			
-	
+
 </xsl:stylesheet>

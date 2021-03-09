@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fhir="http://hl7.org/fhir">
-	<xsl:output method="text"/>
+    <xsl:output method="text"/>
 	<xsl:template match="/">
 <xsl:text>@startuml</xsl:text>
 <!--!include fhirskin.iuml-->
@@ -11,8 +11,7 @@ Title <xsl:value-of select="/fhir:ExampleScenario/fhir:process/fhir:title/@value
 
 <xsl:text>&#13;&#10;</xsl:text>
 <xsl:apply-templates select="/fhir:ExampleScenario/fhir:actor"/>
-<xsl:text>&#13;&#10;</xsl:text><xsl:apply-templates select="/fhir:ExampleScenario/fhir:process"/>
-<xsl:text>&#13;&#10;</xsl:text>
+<xsl:text>&#13;&#10;</xsl:text><xsl:apply-templates select="/fhir:ExampleScenario/fhir:process"/><xsl:text>&#13;&#10;</xsl:text>
 @enduml
 </xsl:template>
 
@@ -20,27 +19,8 @@ Title <xsl:value-of select="/fhir:ExampleScenario/fhir:process/fhir:title/@value
 <xsl:apply-templates select="./fhir:step"/>
 </xsl:template>
 
-
-<xsl:template match="fhir:step"> 
-<xsl:apply-templates select="fhir:operation"/>
-<xsl:apply-templates select="fhir:process"/>
-<xsl:apply-templates select="fhir:pause"/>
-<xsl:apply-templates select="fhir:alternative"/>
-</xsl:template>
-
-<xsl:template match="fhir:operation">
-<xsl:value-of select="fhir:initiator/@value"/> <xsl:if test="fhir:dotted/@value='true'">-</xsl:if>-<xsl:text disable-output-escaping="yes">&gt; </xsl:text> <xsl:value-of select="fhir:receiver/@value"/> : <xsl:value-of select="fhir:name/@value"/>\n<xsl:apply-templates select="fhir:request"/> <xsl:apply-templates select="fhir:response"/>
-<xsl:text>&#13;&#10;</xsl:text>
-<!--
-<xsl:variable name="areThereInstances" select="boolean(./instance)"/>
-<xsl:if test="$areThereInstances='true'">note right
-</xsl:if> 
-<xsl:apply-templates select="./instance"/><xsl:if test="$areThereInstances='true'">end note
-</xsl:if>
--->
-
-</xsl:template>
-
+<xsl:template match="fhir:step"><xsl:apply-templates select="fhir:operation"/><xsl:apply-templates select="fhir:process"/><xsl:apply-templates select="fhir:pause"/><xsl:apply-templates select="fhir:alternative"/></xsl:template>
+<xsl:template match="fhir:operation"><xsl:value-of select="fhir:initiator/@value"/><xsl:if test="fhir:dotted/@value='true'">-</xsl:if>-<xsl:text disable-output-escaping="yes">&gt; </xsl:text> <xsl:value-of select="fhir:receiver/@value"/> : <xsl:value-of select="fhir:name/@value"/>\n<xsl:apply-templates select="fhir:request"/><xsl:apply-templates select="fhir:response"/></xsl:template>
 
 <xsl:template match="fhir:step/fhir:process">
 group <xsl:value-of select="./fhir:title/@value"/><xsl:text>&#13;&#10;</xsl:text>
@@ -96,7 +76,6 @@ participant</xsl:if>
 
 <xsl:template match="fhir:step/pause">
 ...
-
 </xsl:template>
 
 
@@ -108,14 +87,13 @@ participant</xsl:if>
 <xsl:if test="./fhir:resourceId">
 <xsl:variable name="iid" select="./fhir:resourceId/@value"/>
 <xsl:variable name="vid" select="./fhir:versionId/@value"/>
-<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
+<xsl:text>[[ExampleScenario-</xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:id/@value"/><xsl:text>-resources.html#</xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
 
 <xsl:template  match="fhir:response">
 <xsl:if test="./fhir:resourceId">
 <xsl:variable name="iid" select="./fhir:resourceId/@value"/>
 <xsl:variable name="vid" select="./fhir:versionId/@value"/>
-<xsl:text> [[#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/> <xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
-
+<xsl:text>[[ExampleScenario-</xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:id/@value"/><xsl:text>-resources.html#</xsl:text><xsl:value-of select="./fhir:resourceId/@value"/><xsl:text> </xsl:text><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/> <xsl:apply-templates select="./fhir:versionId"/>]]<xsl:text>\n</xsl:text></xsl:if></xsl:template>
 
 
 </xsl:stylesheet>
