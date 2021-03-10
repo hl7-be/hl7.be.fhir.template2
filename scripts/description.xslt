@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:fhir="http://hl7.org/fhir" version="1.0">
     <xsl:output method="html" />
-	<xsl:param name="pref" select="pref" />
+    <xsl:param name="pref" select="pref" />
 	<xsl:template match="/">
 
 
@@ -103,11 +103,22 @@
 	</xsl:template>
 
 	<xsl:template match="fhir:operation">
+        <xsl:variable name="init" select="./fhir:initiator/@value"/>
+        <xsl:variable name="recv" select="./fhir:receiver/@value"/>
+
+
 		<td><a name="p2"><xsl:value-of select="fhir:number/@value" /></a></td>
 		<td><xsl:value-of select="fhir:name/@value" /></td>
 		<td><xsl:value-of select="fhir:description/@value" /></td>
-		<td><xsl:value-of select="../fhir:initiator/@value" /></td>
-		<td><xsl:value-of select="../fhir:receiver/@value" /></td>
+        <td><xsl:call-template name="break"><xsl:with-param name="text" select="/fhir:ExampleScenario/fhir:actor[fhir:actorId/@value=$init]/fhir:name/@value" /></xsl:call-template></td> 
+        <td><xsl:call-template name="break"><xsl:with-param name="text" select="/fhir:ExampleScenario/fhir:actor[fhir:actorId/@value=$recv]/fhir:name/@value" /></xsl:call-template></td> 
+
+					
+
+
+<!--    
+        <td>indexed:        <xsl:value-of select="/fhir:ExampleScenario/fhir:actor[fhir:actorId/@value=fhir:receiver/@value]/fhir:name/@value" /></td> 
+-->
 		<td><xsl:apply-templates select="./fhir:request" /></td>
 		<td><xsl:apply-templates select="./fhir:response" /></td>
 	</xsl:template>
@@ -147,7 +158,9 @@
 	</xsl:template>
 	<xsl:template match="fhir:resourceId">
 		<xsl:variable name="iid" select="./@value" />
-		<a href="example-instances.html#{/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:resourceId/@value}"><xsl:value-of select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value" /></a>
+		<a href="ExampleScenario-{/fhir:ExampleScenario/fhir:id/@value}-resources.html#{/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:resourceId/@value}">
+			<xsl:call-template name="break"><xsl:with-param name="text" select="/fhir:ExampleScenario/fhir:instance[fhir:resourceId/@value=$iid]/fhir:name/@value"/></xsl:call-template>		
+		</a>
 	</xsl:template>
 
 
@@ -172,5 +185,26 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-	
+
+<xsl:template name="break">
+  <xsl:param name="text" select="string(.)"/>
+  <xsl:choose>
+    <xsl:when test="contains($text, '\n')">
+      <xsl:value-of select="substring-before($text, '\n')"/>
+      <br/>
+      <xsl:call-template name="break">
+        <xsl:with-param 
+          name="text" 
+          select="substring-after($text, '\n')"
+        />
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$text"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+
+
 </xsl:stylesheet>
