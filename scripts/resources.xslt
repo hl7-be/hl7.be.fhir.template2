@@ -64,7 +64,7 @@
 		<xsl:variable name="versions" select="count(./fhir:version)" />
 		<tr >
 			<td rowspan="{$versions+1}">
-				<a name="{resourceId/@value}" href="./{fhir:resourceType/@value}-{./fhir:resourceId/@value}.html">
+				<a name="./{fhir:resourceId/@value}" href="./{fhir:resourceType/@value}-{./fhir:resourceId/@value}.html">
 					<b>
 <!--						<xsl:value-of select="fhir:name/@value" />
 -->
