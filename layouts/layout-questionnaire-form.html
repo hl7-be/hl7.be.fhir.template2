@@ -37,8 +37,10 @@
           fhirQ.contained.forEach(function (contained, i) {
             if (contained.resourceType == 'ValueSet'){
               vset = contained;
-              contained = exps.entry.find(e => e.resource.id === vset.id).resource;
-              fhirQ.contained[i] = contained
+              if (("entry" in exps)&&(exps.entry.some(e => e.resource.id === vset.id))){
+                contained = exps.entry.find(e => e.resource.id === vset.id).resource;
+                fhirQ.contained[i] = contained
+              }
             }
           });
         }  
@@ -66,8 +68,8 @@
 
           if(Array.isArray(otherValueSets) && otherValueSets.length){
             otherValueSets.forEach(function (vsURL, i) {
-              if (exps.entry.some(e => e.resource.url === vsURL[0])){
-                newContainedVS = exps.entry.find(e => e.resource.url === vsURL[0]).resource;
+              if (("entry" in exps)&&(exps.entry.some(e => e.resource.url === vsURL[i]))){
+                newContainedVS = exps.entry.find(e => e.resource.url === vsURL[i]).resource;
                 if (!fhirQ.hasOwnProperty('contained')) {fhirQ.contained=[]}
                 fhirQ.contained.push(newContainedVS);
                 console.log("added URL:"+vsURL);       
