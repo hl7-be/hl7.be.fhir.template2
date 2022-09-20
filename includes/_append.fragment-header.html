@@ -1,11 +1,36 @@
-        <div id="ig-nav">
-          <a id="hl7-logo" no-external="true" href="https://hl7-be.github.io">
-            <img height="65" alt="HL7 Belgium" src="{{site.data.info.assets}}assets/images/hl7be-logo-header.png"/>
-          </a>
-        </div>
-        <div id="fhir-nav">
-          <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="{{site.data.info.assets}}assets/images/fhir-logo-www.png"/> </a>
-        </div>
-        <div id="ig-search">
-          <a id="hl7-search-lnk" no-external="true" href="http://hl7.org/fhir/search.cfm"><img alt="Search FHIR" src="{{site.data.info.assets}}assets/images/search.png"/></a>
-        </div>
+        
+<!-- {{site.data.fhir.ig.publisher}} -->
+<!-- {{site.data.fhir.ig.status}} -->
+{% if site.data.fhir.ig.status == "draft" %}
+<div id="ig-nav">
+  <a id="hl7-logo" no-external="true" href="https://hl7-be.github.io">
+    <img height="65" alt="HL7 Belgium" src="{{site.data.info.assets}}assets/images/hl7be-logo-header.png"/>
+  </a>
+</div>
+<div id="fhir-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="{{site.data.info.assets}}assets/images/fhir-logo-www.png"/> </a>
+</div>
+<div id="ig-search">
+  <a id="hl7-search-lnk" no-external="true" href="http://hl7.org/fhir/search.cfm"><img alt="Search FHIR" src="{{site.data.info.assets}}assets/images/search.png"/></a>
+</div>
+{% elsif site.data.fhir.ig.publisher == "eHealth Platform" %}
+<div id="ig-nav">
+  <a id="standards-logo" no-external="true" href="index.html">
+    <img height="50" alt="Welcome on standards website" src="assets/images/standards.svg"/>
+  </a>
+</div>
+{% elsif site.data.fhir.ig.publisher == "HL7 Belgium" %}
+<div id="ig-nav">
+  <a id="hl7-logo" no-external="true" href="https://hl7-be.github.io">
+    <img height="65" alt="HL7 Belgium" src="{{site.data.info.assets}}assets/images/hl7be-logo-header.png"/>
+  </a>
+</div>
+<div id="fhir-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="{{site.data.info.assets}}assets/images/fhir-logo-www.png"/> </a>
+</div>
+<div id="ig-search">
+  <a id="hl7-search-lnk" no-external="true" href="http://hl7.org/fhir/search.cfm"><img alt="Search FHIR" src="{{site.data.info.assets}}assets/images/search.png"/></a>
+</div>
+{% else %}
+<!-- no fitting stylesheet found (status/publisher)-->
+{% endif %}
