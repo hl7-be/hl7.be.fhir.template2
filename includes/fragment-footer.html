@@ -1,0 +1,23 @@
+<!-- {{site.data.fhir.ig.publisher}} -->
+<!-- {{site.data.fhir.ig.status}} -->
+{% if site.data.fhir.ig.status == "draft" %}
+<!-- {{site.data.fhir.ig.publisher}} -->
+<!-- {{site.data.fhir.ig.status}} -->
+{% elsif site.data.fhir.ig.publisher == "eHealth Platform" %}
+Links: <a style="color: var(--footer-hyperlink-text-color)" href="{{site.data.info.assets}}toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 {% for feedbacklink in site.data.features.feedback %}{% if feedbacklink.dashboard %} | <a style="color: var(--footer-hyperlink-text-color)" target="_blank" href="{{feedbacklink.dashboard.url}}">{{feedbacklink.dashboard.label}}</a>{% endif %}{% endfor %}
+
+
+                 <a id="belgium-logo" href="https://www.belgium.be/en" target="_blank">
+                     <img  alt="belgium.be" src="assets/images/logo-be.png">
+                 </a>
+                 <a id="ehealth-logo" href="https://www.ehealth.fgov.be" style="text-decoration:none">
+                     <img height="50" alt="Welcome to ehealth website" src="assets/images/logo-ehealth.png"/>
+                 </a>
+{% elsif site.data.fhir.ig.publisher == "HL7 Belgium" %}
+<!-- {{site.data.fhir.ig.publisher}} -->
+<!-- {{site.data.fhir.ig.status}} -->
+{% else %}
+<!-- no fitting stylesheet found (status/publisher)-->
+{% endif %}

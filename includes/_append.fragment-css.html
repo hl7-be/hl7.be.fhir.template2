@@ -1,1 +1,13 @@
 <link href="{{site.data.info.assets}}assets/css/hl7-be.css" rel="stylesheet"/>
+<!-- Placeholder for child template CSS declarations -->
+<!-- {{site.data.fhir.ig.publisher}} -->
+<!-- {{site.data.fhir.ig.status}} -->
+{% if site.data.fhir.ig.status == "draft" %}
+<link href="{{site.data.info.assets}}assets/css/colors.css" rel="stylesheet"/>
+{% elsif site.data.fhir.ig.publisher == "eHealth Platform" %}
+<link href="{{site.data.info.assets}}assets/css/federal-colors.css" rel="stylesheet"/>
+{% elsif site.data.fhir.ig.publisher == "HL7 Belgium" %}
+<link href="{{site.data.info.assets}}assets/css/hl7-be-colors.css" rel="stylesheet"/>
+{% else %}
+<!-- no fitting stylesheet found (status/publisher)-->
+{% endif %}
