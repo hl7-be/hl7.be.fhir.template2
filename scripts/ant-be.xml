@@ -30,6 +30,7 @@
     <appendArtifacts files="${onGenerate.scenario.files}"/>
   </target>
 
+  <!--
    <target name="createIGyaml" depends="onGenerate.igQa,onGenerate.setup">
     <xslt in="${onGenerate.ig.source}xml" out="temp/pages/application.yaml" style="${ig.scripts}/hapi-yaml.xslt"/>
 
@@ -39,6 +40,6 @@
     <property name="onGenerate.hapi.yaml.files" refid="onGenerate.hapi.yaml"/>
     <appendArtifacts files="${onGenerate.hapi.yaml.files}"/>
   </target>
-
+-->
 </project>
 
