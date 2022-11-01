@@ -29,10 +29,12 @@
       <include name="temp/pages/ExampleScenario*.svg"/>
     </fileset>
     <property name="onGenerate.scenario.files" refid="onGenerate.scenario.id"/>
+    <pathconvert property="scenariofiles" refid="onGenerate.scenario.id" pathsep="," />
     <echo>##########################################</echo>
     <echo>##########################################</echo>
     <echo>##########################################</echo>
     <echo>Scenario files:${onGenerate.scenario.files}</echo>
+    <echo>Scenario files:${scenariofiles}</echo>
     <echo>##########################################</echo>
     <echo>Scenario files:${onGenerate.files}</echo>
     <echo>##########################################</echo>
