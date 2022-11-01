@@ -26,7 +26,7 @@
     <xslt basedir="${ig.temp}/_data" includes="ExampleScenario*.xml" destdir="${dir.temp.includes}" extension="-resources.xhtml" style="${ig.scripts}/resources.xslt"/>
 <!-- see if this is needed or if we can rely on the resource being addded --> 
     <fileset id="onGenerate.scenario.id" dir="${ig.root}">
-      <include name="temp/pages/ExampleScenario*.svg"/>
+      <include name="${dir.temp.includes}/*.*"/>
     </fileset>
     <property name="onGenerate.scenario.files" refid="onGenerate.scenario.id"/>
     <pathconvert property="scenariofiles" refid="onGenerate.scenario.id" pathsep="," />
