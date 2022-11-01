@@ -29,6 +29,17 @@
       <include name="temp/pages/ExampleScenario*.svg"/>
     </fileset>
     <property name="onGenerate.scenario.files" refid="onGenerate.scenario.id"/>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
+    <echo>Scenario files:${onGenerate.scenario.files}</echo>
+    <echo>##########################################</echo>
+    <echo>Scenario files:${onGenerate.files}</echo>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
+    <echo>##########################################</echo>
     <!-- <appendArtifacts files="${onGenerate.scenario.files}"/> -->
   </target>
 
