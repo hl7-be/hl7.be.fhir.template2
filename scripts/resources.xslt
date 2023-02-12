@@ -2,13 +2,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:fhir="http://hl7.org/fhir" version="2.0">
     <xsl:output method="html" />
     <xsl:param name="pref" select="pref" />
-    <xsl:template match="/">
+	<xsl:template match="/">
 
-	<div id="resources">
-		<xsl:for-each-group select="/fhir:ExampleScenario/fhir:instance/fhir:resourceType" group-by="@value">
-			<xsl:apply-templates select="../fhir:resourceType" />
-		</xsl:for-each-group>
-	</div>
+														<div id="resources">
+															<xsl:for-each-group select="/fhir:ExampleScenario/fhir:instance/fhir:resourceType" group-by="@value">
+																<xsl:apply-templates select="../fhir:resourceType" />
+															</xsl:for-each-group>
+														</div>
 
 
 	</xsl:template>
@@ -54,6 +54,9 @@
 		</table>
 		</div>
 	</xsl:template>
+
+
+
 
 
 	<xsl:template match="fhir:instance">
