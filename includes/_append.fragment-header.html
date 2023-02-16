@@ -1,7 +1,7 @@
         
 <!-- {{site.data.fhir.ig.publisher}} -->
 <!-- {{site.data.fhir.ig.status}} -->
-{% sif site.data.fhir.ig.publisher == "eHealth Platform" %}
+{% if site.data.fhir.ig.publisher == "eHealth Platform" %}
 <div id="ig-nav">
   <a id="standards-logo" no-external="true" href="index.html">
     <img height="50" alt="Welcome on standards website" src="assets/images/standards.svg"/>
