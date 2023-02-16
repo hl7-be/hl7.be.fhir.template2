@@ -29,8 +29,8 @@
       $.getJSON("expansions.json", function(data){
         exps = data;
         // Define a FHIR Questionnaire
-        var fhirQ = {% include {{[type]}}-{{[id]}}.json %}
-
+        var fhirQ = {% include {{[type]}}-{{[id]}}.json %};
+        delete fhirQ.text;
         // find the valuesets contained and replace them with the expanded version
         if(fhirQ.hasOwnProperty('contained')){
           fhirQ.contained.forEach(function (contained, i) {
@@ -71,13 +71,12 @@
                 newContainedVS = exps.entry.find(e => e.resource.url === vsURL[i]).resource;
                 if (!fhirQ.hasOwnProperty('contained')) {fhirQ.contained=[]}
                 fhirQ.contained.push(newContainedVS);
-                console.log("added URL:"+vsURL);       
+//                console.log("added URL:"+vsURL);       
               } 
             });
           };
 
-
-        console.log(listValueSets(fhirQ));        
+//        console.log(listValueSets(fhirQ));        
 
 
         function findById(o, id) {
