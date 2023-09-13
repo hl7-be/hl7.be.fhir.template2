@@ -1,5 +1,6 @@
 {
   "script": "scripts/ant-be.xml",
+  "otherScripts" : ["scripts/ant-be.xml", "scripts/ant.xml"]
   "extraTemplates": [
     {
       "name": "resources",
