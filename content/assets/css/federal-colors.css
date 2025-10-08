@@ -42,16 +42,20 @@
   }
   
   
-  #segment-footer > .container .inner-wrapper {
-    padding: 50px 20px;
-  }
-  
-  #belgium-logo {
-    float: right;
-    margin-top: 15px;
-    margin-left: 12px;
-  }
-  
-  #ehealth-logo {
-    float: right;
-  }
+#segment-footer .inner-wrapper p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#belgium-logo, #ehealth-logo {
+  margin-left: 12px;
+  float: none;         /* stop floating */
+  order: 2;            /* logos on the right */
+  display: inline-block;
+  /* optional: push logos to the far right */
+  margin-left: auto;
+}
+
+
