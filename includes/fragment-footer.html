@@ -1,11 +1,16 @@
 <!-- {{site.data.fhir.ig.publisher}} -->
 <!-- {{site.data.fhir.ig.status}} -->
 {% if site.data.fhir.ig.publisher == "eHealth Platform" and site.data.fhir.ig.status != "draft" %}
-Links: <a style="color: var(--footer-hyperlink-text-color)" href="{{site.data.info.assets}}toc.html">Table of Contents</a> |
+Links:
+<a style="color: var(--footer-hyperlink-text-color)" href="{{site.data.info.assets}}toc.html">Table of Contents</a> |
 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
-{% for feedbacklink in site.data.features.feedback %}{% if feedbacklink.dashboard %} | <a style="color: var(--footer-hyperlink-text-color)" target="_blank" href="{{feedbacklink.dashboard.url}}">{{feedbacklink.dashboard.label}}</a>{% endif %}{% endfor %}
+{% for feedbacklink in site.data.features.feedback %}
+  {% if feedbacklink.dashboard %}
+    | <a style="color: var(--footer-hyperlink-text-color)" target="_blank" href="{{feedbacklink.dashboard.url}}">{{feedbacklink.dashboard.label}}</a>
+  {% endif %}
+{% endfor %}
 
-<span class="footer-logos">
+<span class="footer-logos-row">
   <a id="belgium-logo" href="https://www.belgium.be/en" target="_blank">
     <img alt="belgium.be" src="assets/images/logo-be.png"/>
   </a>
