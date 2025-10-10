@@ -1,5 +1,5 @@
 {
-  "name": "hl7.be.fhir.template.ehealth",
+  "name": "hl7.be.fhir.template",
   "version": "0.0.1",
   "type": "fhir.template",
   "license": "CC0-1.0",
